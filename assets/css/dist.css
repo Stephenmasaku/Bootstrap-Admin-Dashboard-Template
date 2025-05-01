@@ -1,0 +1,289 @@
+ :root[data-theme='dark'] {
+    --bg: #1e293b;
+    --text: #f8fafc;
+    --sidebar-bg: #222e3c;
+    --card-bg: #2d354d;
+    --card-header-bg: #2d354d;
+    --table-header-bg: #3c324a;
+    --table-row-hover: #5a4d6d;
+    --border-color: rgba(0, 0, 0, 0.125);
+    --link-color: rgba(233, 236, 239, 0.5);
+    --link-active-bg: linear-gradient(90deg, rgba(159, 125, 221, 0.1), rgba(159, 125, 251, 0.088));
+    --link-active-color: #fff;
+  }
+
+  :root[data-theme='light'] {
+    --bg: #f8f9fa;
+    --text: #212529;
+    --sidebar-bg: #f8f9fa;
+    --card-bg: #ffffff;
+    --card-header-bg: #f1f1f1;
+    --table-header-bg: #f0f0f0;
+    --table-row-hover: #e9ecef;
+    --border-color: rgba(0, 0, 0, 0.125);
+    --link-color: #495057;
+    --link-active-bg: rgba(59, 125, 221, 0.1);
+    --link-active-color: #000;
+  }
+
+  body {
+    background-color: var(--bg);
+    color: var(--text);
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+  }
+
+  .app-container {
+    display: flex;
+    min-height: 100vh;
+  }
+
+  .sidebar {
+    direction: ltr;
+    background-color: var(--sidebar-bg);
+    max-width: 264px;
+    min-width: 264px;
+    transition: all 0.35s ease-in-out;
+    padding-top: 1rem;
+  }
+
+  .sidebar-header {
+    padding: 1rem 1.5rem;
+    font-weight: bold;
+  }
+
+  .sidebar-nav {
+    list-style: none;
+    padding-left: 0;
+  }
+
+  .sidebar-link {
+    background: var(--sidebar-bg);
+    border-left: 3px solid transparent;
+    color: var(--link-color);
+    cursor: pointer;
+    display: block;
+    font-weight: 400;
+    padding: 0.625rem 1.625rem;
+    text-decoration: none;
+    transition: background 0.1s ease-in-out;
+  }
+
+  .sidebar-item.active > .sidebar-link {
+    background: var(--link-active-bg);
+    border-left-color: var(--primary, #9b17e2);
+    color: var(--link-active-color);
+  }
+
+  .main-content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .topbar {
+    background-color: var(--sidebar-bg);
+    padding: 0.75rem 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .dropdown-menu {
+    min-width: 200px;
+  }
+
+  .content-wrapper {
+    flex-grow: 1;
+    padding: 2rem;
+  }
+
+  .footer {
+    background-color: var(--sidebar-bg);
+    padding: 1rem;
+    text-align: center;
+    font-size: 0.875rem;
+  }
+
+  .user-profile img {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+  }
+
+  .dropdown-toggle::after {
+    display: none;
+  }
+
+  .collapsed {
+    margin-left: -264px !important;
+  }
+
+  @media (max-width: 768px) {
+    .sidebar {
+      position: absolute;
+      z-index: 999;
+      height: 100%;
+    }
+
+    .main-content {
+      margin-left: 0;
+    }
+  }
+
+  /* === Component Styles === */
+  .card,
+  .table-custom,
+  .dropdown-menu,
+  .modal-content,
+  .toast,
+  .form-control,
+  .alert {
+    background-color: var(--card-bg);
+    color: var(--text);
+    border: 1px solid var(--border-color);
+  }
+
+  .card .card-header {
+    background-color: var(--card-header-bg);
+    border-bottom: 1px solid var(--border-color);
+    color: var(--text);
+  }
+
+  .table-custom thead {
+    background-color: var(--table-header-bg);
+  }
+
+  .table-custom tbody tr:hover {
+    background-color: var(--table-row-hover);
+  }
+
+  .btn-outline-light {
+    border-color: #fff;
+    color: #fff;
+  }
+
+  .btn-outline-light:hover {
+    background-color: #fff;
+    color: #000;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    color: var(--text);
+  }
+
+  .badge {
+    color: #fff;
+    padding: 0.35em 0.6em;
+    font-weight: 500;
+    border-radius: 0.35rem;
+  }
+
+  .badge.bg-primary { background-color: #9b17e2; }
+  .badge.bg-success { background-color: #31bd3d; }
+  .badge.bg-danger { background-color: #f31446; }
+  .badge.bg-warning { background-color: #fc781b; color: #000; }
+  .badge.bg-info { background-color: #1381f3; }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #2e2c31;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #555;
+    border-radius: 10px;
+  }
+  
+  .theme-text-muted {
+  color: #6c757d; /* Light theme muted */
+}
+
+[data-theme="dark"] .theme-text-muted {
+  color: #f5f5f5; /* Smoke white in dark mode */
+} 
+
+[data-theme="dark"] .custom-dark-table thead,
+[data-theme="dark"] .custom-dark-table thead tr,
+[data-theme="dark"] .custom-dark-table thead th {
+  background-color: #6f7893 !important;
+  color: #fff !important;
+  border-color: #5d647c !important; /* Optional: match dark theme */
+}
+
+[data-theme="dark"] .form-control::placeholder {
+  color: #615f63;
+  opacity: 1;
+}
+
+[data-theme="dark"] .form-control {
+  display: block;
+  width: 100%;
+  background-clip: padding-box;
+  border: 1px solid #615f63;
+  border-radius: .2rem;
+  height: calc(1.5em + .8125rem + 2px);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+  padding: .40625rem .75rem;
+  font-size: .875rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #e5e5e5;
+  background-color: #2b2a2f;
+  transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out, -webkit-box-shadow .15s ease-in-out;
+}
+
+
+[data-theme="dark"] .custom-dark-table tbody,
+[data-theme="dark"] .custom-dark-table tbody tr,
+[data-theme="dark"] .custom-dark-table tbody td {
+  background-color: #6f7893c4 !important;
+  color: #cde !important;
+  border-color: #5d647c !important;
+}
+
+[data-theme="dark"] .custom-dark-table a {
+  color: #fff !important;
+  text-decoration: none !important;
+  font-weight: bold !important;
+}
+
+}
+
+[data-theme="dark"] .custom-dark-table .badge {
+  color: inherit !important;
+  
+}
+
+footer {
+  padding: 1rem 0;
+  text-align: center;
+}
+
+footer small {
+  font-size: 0.875rem;
+}
+
+footer a {
+  text-decoration: none;
+}
+
+/* Default theme */
+.custom-dark-logo h4 {
+  color: #3f1980;
+}
+
+.custom-dark-logo h4 img {
+  content: url('../img/logod.png');
+}
+
+/* Dark theme override */
+[data-theme="dark"] .custom-dark-logo h4 {
+  color: #fff; 
+}
+
+[data-theme="dark"] .custom-dark-logo h4 img {
+  content: url('../img/logo.png'); /* Dark mode logo */
+}
